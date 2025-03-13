@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<style>
+     body{
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 25px;
+        background-color: sandybrown;
+
+     }
+</style>
+<body>
+    <h1>ToDo List</h1>
+    <div>
+        <p>List</p>
+        <ul id="displaylist">
+
+        </ul>
+    <input type="text" id="input">
+    <button id="addtask">add Task</button>
+    </div>
+
+    <h1 >completed list here below...</h1>
+
+    <div>
+    <ul id="completedlist">
+
+    </ul>
+</div>
+
+
+
+
+
+    
+</body>
+<script>
+    let btn= document.getElementById('addtask');
+    let input= document.getElementById('input');
+    let displaylist= document.getElementById('displaylist');
+    let listnumber = new Array();
+    btn.addEventListener('click',(event)=>{
+        if(input.value!=" ")
+    {
+        listnumber.push(input.value);
+        displaylist.innerHTML+=`<li id=${listnumber.length-1}><button onclick="completed(${listnumber.length-1})">${input.value}</button></li>`;
+        input.value =" ";
+    }
+    })
+    let completedlist = document.getElementById('completedlist');
+    function completed(id){
+        completedlist.innerHTML+=`<li style= "color: green";>${listnumber[id]}</li>`;
+        document.getElementById(id).style.display="none";
+
+
+    }
+
+</script>
+</html>
